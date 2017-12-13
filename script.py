@@ -7,17 +7,6 @@ with open("index.html", "w") as file:
     file.write(str("""  <meta name="description" content="latest news,news,scraped news">"""))
     file.write(str("""  <meta name="keywords" content="news, india news">"""))
     file.write(str('</head><body><ul>'))
-    file.write(str('<script type='+'"'+'text/javascript'+'"'+'>\n'))    
-    file.write(str('( function() {\n'))  
-    file.write(str("    if (window.CHITIKA === undefined) { window.CHITIKA = {"+"'"+"units"+"'"+" : [] }; };\n"))
-    file.write(str('     var unit = {'+'"'+'calltype'+'"'+':'+'"'+'async[2]'+'"'+','+'"'+'publisher'+'"'+':'+'"'+'lokeshdangi002'+'"'+','+'"'+'width'+'"'+':728,'+'"'+'height'+'"'+':90,'+'"'+'sid'+'"'+':'+'"'+'Chitika Default'+'"'+'};\n'))
-    file.write(str('     var placement_id = window.CHITIKA.units.length; \n'))
-    file.write(str('     window.CHITIKA.units.push(unit);\n'))
-    file.write(str("""       document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');\n"""))
-    file.write(str('}());\n'))
-    file.write(str('</script>\n'))
-    file.write(str(""" <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script> \n"""))
-
 for i in range(1,10):
     sauce = urllib.request.urlopen('http://indianexpress.com/latest-news/'+ str(i)).read()
     soup = bs.BeautifulSoup(sauce,'lxml')
@@ -49,18 +38,7 @@ for i in range(1,10):
                     try:
                         file.write(str('<p>'+ x.text + '</p>'))
                     except UnicodeEncodeError:
-                        pass
-                file.write(str('<script type='+'"'+'text/javascript'+'"'+'>\n'))    
-                file.write(str('( function() {\n'))  
-                file.write(str("    if (window.CHITIKA === undefined) { window.CHITIKA = {"+"'"+"units"+"'"+" : [] }; };\n"))
-                file.write(str('     var unit = {'+'"'+'calltype'+'"'+':'+'"'+'async[2]'+'"'+','+'"'+'publisher'+'"'+':'+'"'+'lokeshdangi002'+'"'+','+'"'+'width'+'"'+':728,'+'"'+'height'+'"'+':90,'+'"'+'sid'+'"'+':'+'"'+'Chitika Default'+'"'+'};\n'))
-                file.write(str('     var placement_id = window.CHITIKA.units.length; \n'))
-                file.write(str('     window.CHITIKA.units.push(unit);\n'))
-                file.write(str("""       document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');\n"""))
-                file.write(str('}());\n'))
-                file.write(str('</script>\n'))
-                file.write(str(""" <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script> \n"""))
-                
+                        pass  
         except OSError:
             pass
         with open("index.html", "a") as file:
